@@ -244,6 +244,37 @@ button:active, a:active {
     transition: none;
   }
 }
+
+.btn {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(196, 181, 253, 0.55);
+  box-shadow:
+    0 0 15px rgba(139, 92, 246, 0.3),
+    0 0 35px rgba(139, 92, 246, 0.12);
+  animation: myaiButtonGlow 2.5s ease-in-out infinite alternate;
+}
+
+.btn:hover {
+  box-shadow:
+    0 0 22px rgba(139, 92, 246, 0.65),
+    0 0 45px rgba(139, 92, 246, 0.3);
+}
+
+@keyframes myaiButtonGlow {
+  from {
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.25);
+  }
+  to {
+    box-shadow: 0 0 26px rgba(139, 92, 246, 0.55);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    animation: none;
+  }
+}  
 </style>
 </head>
 <body>
@@ -255,7 +286,7 @@ button:active, a:active {
       <a href="#features">Возможности</a>
       <a href="#about">О проекте</a>
     </nav>
-    <a class="btn" href="https://myai-syzy.onrender.com/">Открыть ИИ ↗</a>
+    <a class="btn" href="https://myai-syzy.onrender.com/">Открыть MyAI ↗</a>
   </div>
 </header>
 
