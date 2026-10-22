@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0714">
+<meta name="description" content="MyAI — твой личный искусственный интеллект.">
+<title>MyAI — Твой личный ИИ</title>
+<style>
+:root {
+  --bg: #0b0714;
+  --panel: #171024;
+  --purple: #8b5cf6;
+  --light: #c4b5fd;
+  --text: #f5f3ff;
+  --muted: #aaa0c3;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+a { color: inherit; text-decoration: none; }
+.container { width: min(1100px, 90%); margin: auto; }
+header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: #0b0714eF;
+  border-bottom: 1px solid #ffffff12;
+  backdrop-filter: blur(15px);
+}
+.nav {
+  min-height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.logo { font-size: 27px; font-weight: 800; }
+.logo span { color: var(--purple); }
+.links { display: flex; gap: 25px; color: var(--muted); font-size: 14px; }
+.links a:hover { color: white; }
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border-radius: 13px;
+  background: linear-gradient(135deg, #a78bfa, #7138e8);
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 8px 30px #8b5cf630;
+  transition: transform .2s, box-shadow .2s;
+}
+.btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px #8b5cf650; }
+.btn.alt { background: #ffffff09; border: 1px solid #ffffff20; box-shadow: none; }
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 100px 0 80px;
+  overflow: hidden;
+}
+.glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  top: 30px;
+  left: calc(50% - 200px);
+  background: #7c3aed38;
+  filter: blur(100px);
+  border-radius: 50%;
+}
+.hero-content { position: relative; animation: enter .8s ease both; }
+.pill {
+  display: inline-block;
+  padding: 9px 15px;
+  border: 1px solid #a78bfa50;
+  border-radius: 50px;
+  background: #8b5cf615;
+  color: var(--light);
+  font-size: 13px;
+}
+h1 {
+  font-size: clamp(43px, 7vw, 76px);
+  line-height: 1.1;
+  letter-spacing: -2.5px;
+  margin: 28px 0 20px;
+}
+.gradient {
+  background: linear-gradient(100deg, #ddd6fe, #8b5cf6, #e9d5ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero p {
+  max-width: 590px;
+  margin: 0 auto 30px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.8;
+}
+.actions { display: flex; justify-content: center; gap: 13px; flex-wrap: wrap; }
+.note { color: #847894; font-size: 12px; margin-top: 20px; }
+.demo {
+  max-width: 730px;
+  margin: 55px auto 0;
+  padding: 18px;
+  border-radius: 20px;
+  text-align: left;
+  background: linear-gradient(145deg, #1b1230, #100b1b);
+  border: 1px solid #a78bfa40;
+  box-shadow: 0 25px 80px #0008;
+  animation: float 5s ease-in-out infinite;
+}
+.demo-top { color: var(--muted); font-size: 12px; padding-bottom: 15px; border-bottom: 1px solid #ffffff12; }
+.bubble { padding: 14px 16px; margin-top: 17px; border-radius: 13px; font-size: 14px; line-height: 1.7; }
+.user { background: #8b5cf625; border: 1px solid #8b5cf630; margin-left: 12%; }
+.assistant { background: #ffffff08; color: #ded5ee; }
+.assistant b { color: var(--light); }
+section { padding: 70px 0; }
+.section-title { text-align: center; font-size: clamp(30px, 4vw, 43px); letter-spacing: -1px; margin: 0 0 14px; }
+.section-text { text-align: center; color: var(--muted); line-height: 1.8; max-width: 570px; margin: 0 auto 35px; }
+.features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.feature {
+  background: linear-gradient(145deg, #191127, #100b1b);
+  border: 1px solid #ffffff13;
+  border-radius: 18px;
+  padding: 25px;
+  transition: .25s;
+}
+.feature:hover { transform: translateY(-5px); border-color: #8b5cf680; }
+.icon {
+  width: 47px;
+  height: 47px;
+  display: grid;
+  place-items: center;
+  background: #8b5cf625;
+  border-radius: 14px;
+  color: var(--light);
+  font-size: 24px;
+  margin-bottom: 18px;
+}
+.feature h3 { margin: 0 0 10px; }
+.feature p { color: var(--muted); line-height: 1.8; font-size: 14px; margin: 0; }
+.cta {
+  text-align: center;
+  padding: 55px 22px;
+  border: 1px solid #a78bfa40;
+  border-radius: 24px;
+  background: radial-gradient(ellipse at top, #7c3aed30, transparent 70%), #120d20;
+}
+.cta h2 { font-size: clamp(30px, 5vw, 44px); margin: 0 0 15px; }
+.cta p { color: var(--muted); line-height: 1.8; margin: 0 auto 25px; max-width: 500px; }
+footer { border-top: 1px solid #ffffff12; padding: 25px 0; color: #8e829f; font-size: 13px; }
+.footer-inner { display: flex; justify-content: space-between; gap: 15px; }
+footer strong { color: var(--light); }
+@keyframes enter {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+@media (max-width: 700px) {
+  .nav { min-height: 68px; }
+  .links { display: none; }
+  .nav .btn { padding: 11px 12px; font-size: 12px; }
+  .logo { font-size: 24px; }
+  .hero { padding: 75px 0 55px; }
+  h1 { letter-spacing: -1.5px; }
+  .hero p { font-size: 15px; }
+  .demo { padding: 12px; margin-top: 40px; }
+  .bubble { font-size: 12px; padding: 12px; }
+  section { padding: 50px 0; }
+  .features { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#">MyAI<span> ✦</span></a>
+    <nav class="links">
+      <a href="#features">Возможности</a>
+      <a href="#about">О проекте</a>
+    </nav>
+    <a class="btn" href="https://myai-syzy.onrender.com/">Открыть ИИ ↗</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="glow"></div>
+    <div class="container hero-content">
+      <div class="pill">✦ Твой личный искусственный интеллект</div>
+      <h1>Твои идеи.<br><span class="gradient">Твои возможности.</span></h1>
+      <p>Знакомься с MyAI — личным ИИ-помощником для вопросов, новых идей, обучения и творчества. Начни общение всего одним нажатием.</p>
+      <div class="actions">
+        <a class="btn" href="https://myai-syzy.onrender.com/">Попробовать MyAI ↗</a>
+        <a class="btn alt" href="#features">Узнать больше ↓</a>
+      </div>
+      <div class="note">Личный проект · Доступен онлайн · Удобен на телефоне</div>
+      <div class="demo">
+        <div class="demo-top">● &nbsp; ● &nbsp; ● &nbsp; MyAI — пример общения</div>
+        <div class="bubble user">Привет! Чем ты можешь мне помочь?</div>
+        <div class="bubble assistant"><b>✦ MyAI</b><br>Я помогу разобраться в вопросах, объяснить сложные темы простыми словами, придумать идеи и спланировать новые проекты.</div>
+        <div class="bubble user">Давай создадим что-нибудь крутое! ✨</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="container">
+      <h2 class="section-title">Больше возможностей с <span class="gradient">MyAI</span></h2>
+      <p class="section-text">Твой помощник для повседневных вопросов, обучения и новых задумок.</p>
+      <div class="features">
+        <article class="feature">
+          <div class="icon">✦</div>
+          <h3>Ответы на вопросы</h3>
+          <p>Изучай интересные темы и получай понятные объяснения.</p>
+        </article>
+        <article class="feature">
+          <div class="icon">⌘</div>
+          <h3>Новые идеи</h3>
+          <p>Придумывай проекты, ищи вдохновение и составляй планы.</p>
+        </article>
+        <article class="feature">
+          <div class="icon">⚡</div>
+          <h3>Всегда под рукой</h3>
+          <p>Открывай MyAI в браузере на компьютере или телефоне.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="cta">
+        <h2>Готов попробовать <span class="gradient">MyAI?</span></h2>
+        <p>Открой чат и познакомься со своим личным искусственным интеллектом.</p>
+        <a class="btn" href="https://myai-syzy.onrender.com/">Перейти к ИИ ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div><strong>MyAI ✦</strong> · Твой личный ИИ-проект</div>
+    <div>Создано с интересом к технологиям · 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>
