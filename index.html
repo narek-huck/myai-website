@@ -186,6 +186,64 @@ footer strong { color: var(--light); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; }
 }
+  
+/* MyAI — Premium Effects */
+body {
+  background-image:
+    radial-gradient(ellipse at 15% 15%, rgba(139, 92, 246, 0.16), transparent 45%),
+    radial-gradient(ellipse at 85% 75%, rgba(99, 102, 241, 0.13), transparent 45%);
+  background-attachment: fixed;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  pointer-events: none;
+  z-index: -1;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    rgba(139, 92, 246, 0.07),
+    transparent,
+    rgba(196, 181, 253, 0.06),
+    transparent
+  );
+  filter: blur(80px);
+  animation: myaiGlow 24s linear infinite;
+}
+
+button, a {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+button:hover, a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(139, 92, 246, 0.25);
+}
+
+button:active, a:active {
+  transform: translateY(0) scale(0.98);
+}
+
+@keyframes myaiGlow {
+  from { transform: rotate(0deg) scale(1); }
+  to { transform: rotate(360deg) scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    animation: none;
+  }
+
+  button, a {
+    transition: none;
+  }
+}
 </style>
 </head>
 <body>
